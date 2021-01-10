@@ -1,0 +1,94 @@
+body {
+    direction: rtl;
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px;
+    font-size: 2em;
+}
+
+ul {
+    list-style: none;
+}
+
+.canvas-wrapper {
+    /* Prevent nearby text being highlighted when accidentally dragging mouse outside confines of the canvas */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+canvas {
+    border: 2px solid #888;
+    border-radius: 4px;
+    /* Might be needed for correct mouse co-ords in Firefox */
+    position: relative;
+}
+
+
+button {
+    font-size: 1.2em;
+    margin: 5px;
+}
+
+.step-select-word {
+    background-color: whitesmoke;
+    border-radius: 4px;
+}
+
+
+.step-select-word h2 {
+    background-color: #fff5b2;
+    padding: 5px;
+    text-align: center;
+}
+
+.step-select-word li {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid whitesmoke;
+    margin-bottom: 10px;
+    
+}
+
+.spot-list-container {
+    background-color: #01c2ff;
+    color: whitesmoke;
+    padding: 10px;
+}
+.spot-list {
+    display: flex;
+    justify-content: space-around;
+}
+.spot-list li {
+    background-color: whitesmoke;
+    color: black;
+    text-align: center;
+    width: 2em;
+    height: 2em;
+    border-radius: .3em;
+    border:1px solid black;
+    
+}
+
+.letter-list-container {
+    background-color:lightgray;
+    color: whitesmoke;
+    padding: 10px;
+}
+
+.letter-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.letter-list li {
+    background-color: #01c2ff;
+    border:1px solid black;
+    border-radius: 4px;
+    font-size: 1.5em;
+    margin: 2px;
+    padding: 4px;
+}

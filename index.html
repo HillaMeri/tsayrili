@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <title>ציירילי</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <section class="step-select-word">
+        <h2>
+            <span>
+                בחרי מילה
+            </span>
+            <span>✎</span>
+        </h2>
+        <ul class="word-list">
+        </ul>
+    </section>
+    <section class="step-draw" hidden>
+        <h2>
+            ציירי
+            <span></span>
+        </h2>
+        <div>
+            <button class="btn-cancel" title="Back">🗙</button>
+            <button class="btn-clear" title="Clear">⎚</button>
+            <input type="color" name="color" />
+            <input type="range" name="brushSize" value="1" min="1" max="17" step="4" title="Brush Size" />
+        </div>
+        <div class="canvas-wrapper">
+            <canvas height="300" width="400">
+            </canvas>
+        </div>
+        <button class="btn-send" title="Done">🖅</button>
+    </section>
+    <section class="step-guess" hidden>
+        <button class="btn-play" title="Play Drawing">▶</button>
+        <div class="spot-list-container">
+            <ul class="spot-list"></ul>
+        </div>
+        <div class="letter-list-container">
+            <ul class="letter-list"></ul>
+        </div>
+    </section>
+    <script type1="module" src="js/main.js"></script>
+</body>
+
+</html>

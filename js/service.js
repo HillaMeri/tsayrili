@@ -24,12 +24,15 @@ const gWordScoreName = {
     3: 'קשה'
 }
 
-const gDraw = {
-    color: 'black',
-    brushSize: 1
-}
 
 const gLetters = 'אבגדהוזחטיכלמנסעפצקרשת'.split('');
+
+var gDrawsToGuess = []
+
+var gCurrDrawToGuess = {
+    word: '',
+    drawDots: []
+}
 
 function getWords() {
     return gWords;
@@ -54,14 +57,25 @@ function setGuessWordTxt(gussWordTxt) {
     gGuessedWordTxt = gussWordTxt;
 }
 
-function getDraw() {
-    return gDraw
-}
-
-function setDraw(type, val) {
-    gDraw[type] = val;
-}
-
 function getRandomLetter() {
     return gLetters[parseInt(Math.random() * gLetters.length)]
+}
+
+
+function addDraw(draw) {
+    const newDraw = {
+        word: gCurrWordTxt,
+        drawDots: draw.drawDots
+    }
+    gCurrWordTxt = '';
+    gDrawsToGuess.push(newDraw)
+}
+
+function getDrawToGuess() {
+    gCurrDrawToGuess = gDrawsToGuess.pop();
+    return gCurrDrawToGuess;
+}
+
+function getCurrDraw(){
+    return gCurrDrawToGuess;
 }

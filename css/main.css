@@ -1,13 +1,18 @@
 body {
     direction: rtl;
-    max-width: 1000px;
-    margin: auto;
-    padding: 40px;
+    /* max-width: 1000px; */
+    /* margin: auto;
+    padding: 40px; */
+    margin: 0;
     font-size: 2em;
 }
 
 ul {
     list-style: none;
+}
+
+button{
+    cursor: pointer;
 }
 
 .canvas-wrapper {

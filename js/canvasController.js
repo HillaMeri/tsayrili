@@ -3,10 +3,14 @@
 var gCanvas, gCtx
 var isMouseDown = false
 
-const gDrawDots = window.dots = []
+var gDrawDots = window.dots = []
+
+const gDraw = {
+    color: 'black',
+    brushSize: 1
+}
 
 function initCanvas() {
-
     // Get the specific canvas element from the HTML document
     gCanvas = document.querySelector('canvas')
     gCtx = gCanvas.getContext('2d')
@@ -36,8 +40,6 @@ function initCanvas() {
 
 }
 
-
-
 // Keep track of the mouse button being pressed and draw a dot at current location
 function onCanvasMouseDown(ev) {
     isMouseDown = true
@@ -46,6 +48,9 @@ function onCanvasMouseDown(ev) {
     drawDot(gCtx, mousePos)
 }
 
+function setDraw(type, val) {
+    gDraw[type] = val;
+}
 
 function getMousePos(ev) {
     const mousePos = {
@@ -71,12 +76,7 @@ function onCanvasMouseMove(ev) {
     }
 }
 
-function onPlayDraw() {
-    clearCanvas();
-    gDrawDots.forEach((dot, idx) => {
-        setTimeout(drawDot, 10 * idx, dot)
-    })
-}
+
 // Draws a dot at a specific position on the supplied canvas name
 // Parameters are: A canvas context, the x position, the y position, the size of the dot
 function drawDot(pos) {
@@ -98,12 +98,26 @@ function drawDot(pos) {
 
 function clearCanvas() {
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
+    gDraw.color = 'black'
+    gDraw.brushSize = 1
 }
-
 
 function onSetColor(ev) {
     setDraw('color', ev.target.value)
 }
+
 function onSetBrushSize(ev) {
     setDraw('brushSize', +ev.target.value)
+}
+
+function drawEnd() {
+    var newDraw = {
+        drawDots: [...gDrawDots]
+    }
+    gDrawDots = [];
+    return newDraw;
+}
+
+function clearDraw() {
+    gDrawDots = []
 }

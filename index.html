@@ -1,52 +1,76 @@
 <html>
-
-<head>
+  <head>
     <title>ציירילי</title>
-    <link rel="stylesheet" href="css/main.css">
-</head>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/home.css" />
+  </head>
 
-<body>
-    <section class="step-select-word">
-        <h2>
-            <span>
-                בחרי מילה
-            </span>
-            <span>✎</span>
-        </h2>
-        <ul class="word-list">
-        </ul>
+  <body>
+    <section class="home-game">
+      <header class="main-header">
+        <div class="logo">ציירילילי</div>
+        <img class="user-img" src="" />
+      </header>
+      <div class="user-reward">
+        <p class="user-booms">💣</p>
+        <p class="user-coins">💰</p>
+      </div>
+      <div class="new-game">
+        <button class="btn-guess-word">נחש מילה</button>
+        <button class="btn-draw-word">צייר מילה</button>
+      </div>
     </section>
+
+    <section class="step-select-word" hidden>
+      <button class="btn-back-home">חזרה</button>
+      <h2>
+        <span> בחרי מילה </span>
+        <span>✎</span>
+      </h2>
+      <ul class="word-list"></ul>
+    </section>
+
     <section class="step-draw" hidden>
-        <h2>
-            ציירי
-            <span></span>
-        </h2>
-        <div>
-            <button class="btn-cancel" title="Back">🗙</button>
-            <button class="btn-clear" title="Clear">⎚</button>
-            <input type="color" name="color" />
-            <input type="range" name="brushSize" value="1" min="1" max="17" step="4" title="Brush Size" />
-        </div>
-        <div class="canvas-wrapper">
-            <canvas height="300" width="400">
-            </canvas>
-        </div>
-        <button class="btn-send" title="Done">🖅</button>
+      <h2>
+        ציירי
+        <span></span>
+      </h2>
+      <div>
+        <button class="btn-cancel" title="Back">🗙</button>
+        <button class="btn-clear" title="Clear">⎚</button>
+        <input type="color" name="color" />
+        <input
+          type="range"
+          name="brushSize"
+          value="1"
+          min="1"
+          max="17"
+          step="4"
+          title="Brush Size"
+        />
+      </div>
+      <div class="canvas-wrapper">
+        <canvas height="300" width="400"> </canvas>
+      </div>
+      <button class="btn-send" title="Done">🖅</button>
     </section>
+
     <section class="step-guess" hidden>
-        <button class="btn-play" title="Play Drawing">▶</button>
-        <div class="spot-list-container">
-            <ul class="spot-list"></ul>
-        </div>
-        <div class="letter-list-container">
-            <ul class="letter-list"></ul>
-        </div>
+      <button class="btn-play" title="Play Drawing">▶</button>
+      <div class="spot-list-container">
+        <ul class="spot-list"></ul>
+      </div>
+      <div class="letter-list-container">
+        <ul class="letter-list"></ul>
+      </div>
     </section>
+
     <script type1="module" src="js/utilsService.js"></script>
+    <script type1="module" src="js/userService.js"></script>
     <script type1="module" src="js/service.js"></script>
     <script type1="module" src="js/canvasController.js"></script>
+    <script type1="module" src="js/userController.js"></script>
     <script type1="module" src="js/controller.js"></script>
-    <!-- <script type1="module" src="js/main.js"></script> -->
-</body>
-
+    <script type1="module" src="js/main.js"></script>
+  </body>
 </html>

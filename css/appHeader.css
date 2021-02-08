@@ -1,0 +1,42 @@
+.main-header {
+    width: 100%;
+    height: 150px;
+    background-color: #39c5f5;
+}
+
+.header-container {
+    width: 100%;
+}
+
+.header-container .user-img, .header-container .curr-action {
+    height: 75px;
+    width: 75px;
+}
+
+.header-container .user-img {
+    border: 3px solid white;
+}
+
+.logo img {
+    width: 270px;
+    height: 200px;
+}
+
+.user-reward {
+    flex-direction: row-reverse;
+    background-image: linear-gradient(white, #b7e6fc);
+    font-size: 1rem;
+    padding: 10px;
+    font-size: 3rem;
+    font-weight: 700;
+    color: gray;
+}
+
+.user-bombs>*, .user-coins>* {
+    margin-inline-end: 15px;
+}
+
+.user-reward img {
+    width: 50px;
+    height: 50px;
+}

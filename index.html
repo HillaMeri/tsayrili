@@ -2,62 +2,107 @@
   <head>
     <title>ציירילי</title>
     <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/appHeader.css" />
     <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/cavnasPage.css" />
+    <link rel="stylesheet" href="css/helpers.css" />
+    <link rel="stylesheet" href="css/selectWords.css" />
+    <script
+      src="https://kit.fontawesome.com/1ed641f7ad.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
 
   <body>
     <section class="home-game">
-      <header class="main-header">
-        <div class="logo">ציירילילי</div>
-        <img class="user-img" src="" />
+      <header class="main-header flex">
+        <div
+          class="header-container main-layout flex align-center space-between"
+        >
+          <div class="curr-action"> <img src="img/currency.png"/> </div>
+          <div class="logo"> <img src="img/logo.png"/> </div>
+          <div class="header-action"></div>
+        </div>
       </header>
-      <div class="user-reward">
-        <p class="user-booms">💣</p>
-        <p class="user-coins">💰</p>
-      </div>
+      <section class="user-reward">
+        <div class="main-layout flex">
+          <div class="user-bombs flex align-center">
+            <img src="img/bomb.png" />
+            <span></span>
+          </div>
+          <div class="user-coins flex align-center">
+            <img src="img/currency.png" />
+            <span></span>
+          </div>
+        </div>
+      </section>
+
       <div class="new-game">
         <button class="btn-guess-word">נחש מילה</button>
         <button class="btn-draw-word">צייר מילה</button>
       </div>
-    </section>
 
-    <section class="step-select-word" hidden>
-      <button class="btn-back-home">חזרה</button>
-      <h2>
-        <span> בחרי מילה </span>
-        <span>✎</span>
-      </h2>
-      <ul class="word-list"></ul>
+      <section class="step-select-word main-layout" hidden>
+            <h2 class="flex align-center space-between">
+              <div class="btn-replace-words flex align-center space-around">
+                <img src="img/currency.png" />
+                <span>5</span>
+                <i class="fas fa-random"></i>
+              </div>
+              <span> בחרי מילה </span>
+              <img src="img/logo2.png" />
+            </h2>
+
+          <ul class="word-list"></ul>
+      </section>
     </section>
 
     <section class="step-draw" hidden>
-      <h2>
-        ציירי
-        <span></span>
-      </h2>
+      <header class="sub-header flex">
+        <div class="turn-count flex column align-center">
+          שלב
+          <span class="turn-num">1</span>
+        </div>
+
+        <h2 class="turn-about flex align-center">
+           אתה מצייר עכשיו<span></span>
+        </h2>
+      </header>
       <div>
-        <button class="btn-cancel" title="Back">🗙</button>
-        <button class="btn-clear" title="Clear">⎚</button>
-        <input type="color" name="color" />
+        <div class="color-palt"></div>
+
+        <!-- <input type="color" name-="color" /> -->
+      </div>
+
+      <div class="canvas-wrapper flex justify-center">
+        <canvas height="750" width="750"> </canvas>
+      </div>
+
+      <div class="btn-action">
         <input
-          type="range"
-          name="brushSize"
-          value="1"
-          min="1"
-          max="17"
-          step="4"
-          title="Brush Size"
-        />
+        type="range"
+        name="brushSize"
+        value="1"
+        min="1"
+        max="17"
+        step="4"
+        title="Brush Size"
+      />
+
+        <!-- <button class="btn-brush" title="Brush"><i class="fas fa-pencil-alt"></i></button> -->
+        <button class="btn-clear" title="Clear">
+          <i class="fas fa-trash-alt"></i>
+        </button>
+        <button class="btn-cancel" title="Back">🗙</button>
+        <button class="btn-send" title="Done">🖅</button>
       </div>
-      <div class="canvas-wrapper">
-        <canvas height="300" width="400"> </canvas>
-      </div>
-      <button class="btn-send" title="Done">🖅</button>
     </section>
 
     <section class="step-guess" hidden>
       <button class="btn-play" title="Play Drawing">▶</button>
-      <div class="spot-list-container">
+      <button class="btn-bomb">💣</button>
+      <button class="btn-replace-letters">🌫</button>
+      <div class="spot-list-container flex justify-center">
         <ul class="spot-list"></ul>
       </div>
       <div class="letter-list-container">
@@ -71,6 +116,5 @@
     <script type1="module" src="js/canvasController.js"></script>
     <script type1="module" src="js/userController.js"></script>
     <script type1="module" src="js/controller.js"></script>
-    <script type1="module" src="js/main.js"></script>
   </body>
 </html>

@@ -38,6 +38,7 @@ function initCanvas() {
     gCanvas.addEventListener('touchend', onCanvasMouseUp)
     gCanvas.addEventListener('touchup', onCanvasMouseUp)
 
+    gCanvas.width = window.innerWidth;
 }
 
 // Keep track of the mouse button being pressed and draw a dot at current location

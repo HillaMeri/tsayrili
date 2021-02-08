@@ -1,0 +1,74 @@
+.step-select-word {
+    background-color: whitesmoke;
+    /* margin: 50px 15px 0 15px; */
+    border-radius: 15px;
+    margin-top: 50px;
+    padding: 10px;
+}
+
+.step-select-word .word-list {
+    margin: 0;
+    padding: 0;
+}
+
+.step-select-word .word-list>* {
+    border-bottom: 1px solid whitesmoke;
+}
+
+.step-select-word h2 {
+    background-color: #fef099;
+    padding: 20px;
+    text-align: center;
+}
+
+h2 span {
+    font-size: 2.5rem;
+}
+
+.step-select-word img {
+    width: 50px;
+    height: 75px;
+}
+
+.step-select-word li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 20px;
+    align-items: center;
+}
+
+.step-select-word li span {
+    text-align: center;
+}
+
+.step-select-word li .word-txt {
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+.step-select-word li .word-score-name {
+    color: #777777;
+}
+
+.step-select-word li img {
+    width: 40px;
+    height: 40px;
+}
+
+.step-select-word li:not(:last-child) {
+    border-bottom: 1px solid #aeaeae;
+}
+
+.btn-replace-words {
+    background-color: #39c5f5;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    width: 150px;
+}
+
+.btn-replace-words img {
+    width: 35px;
+    height: 35px;
+}

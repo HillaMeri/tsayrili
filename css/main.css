@@ -1,3 +1,7 @@
+html {
+    font-family: sans-serif;
+}
+
 body {
     direction: rtl;
     /* max-width: 1000px; */
@@ -7,12 +11,34 @@ body {
     font-size: 2em;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    margin: 0;
+    line-height: 1.3;
+}
+
+p {
+    margin: 0 0 1em;
+}
+
+img {
+    width: 100%;
+    object-fit: cover;
+}
+
+a {
+    text-decoration: none;
+}
+
 ul {
     list-style: none;
 }
 
-button{
+button {
     cursor: pointer;
+    border: none;
+    background: transparent;
+    outline: none;
 }
 
 .canvas-wrapper {
@@ -32,54 +58,43 @@ canvas {
     position: relative;
 }
 
-
 button {
     font-size: 1.2em;
     margin: 5px;
 }
 
-.step-select-word {
-    background-color: whitesmoke;
-    border-radius: 4px;
-}
-
-
-.step-select-word h2 {
-    background-color: #fff5b2;
-    padding: 5px;
-    text-align: center;
-}
-
-.step-select-word li {
-    display: flex;
-    justify-content: space-around;
-    border-bottom: 1px solid whitesmoke;
-    margin-bottom: 10px;
-    
+.step-guess {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 .spot-list-container {
-    background-color: #01c2ff;
+    background-color: rgb(82, 209, 251, 0.8);
     color: whitesmoke;
     padding: 10px;
 }
+
 .spot-list {
     display: flex;
     justify-content: space-around;
 }
-.spot-list li {
+
+/* .spot-list li {
     background-color: whitesmoke;
     color: black;
     text-align: center;
-    width: 2em;
-    height: 2em;
-    border-radius: .3em;
-    border:1px solid black;
-    
-}
+    width: 1em;
+    height: 1em;
+    border-radius: 20px;
+    border: 6px solid #5f8f9e;
+    margin: 0 5px;
+    font-size: 5.5rem;
+    color: white;
+} */
 
 .letter-list-container {
-    background-color:lightgray;
+    background-color: #f5f6f6;
     color: whitesmoke;
     padding: 10px;
 }
@@ -87,13 +102,26 @@ button {
 .letter-list {
     display: flex;
     flex-wrap: wrap;
+    gap: 15px;
+}
+
+.letter-list li, .spot-list li {
+    background-color: #3fbdfb;
+    border-radius: 20px;
+    border: 6px solid #5f8f9e;
+    color: white;
+    font-size: 5.5rem;
+    width: 1em;
+    height: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .letter-list li {
-    background-color: #01c2ff;
-    border:1px solid black;
-    border-radius: 4px;
-    font-size: 1.5em;
-    margin: 2px;
-    padding: 4px;
+    box-shadow: 1px 6px #5f8f9e;
+}
+
+.spot-list li {
+    margin: 0 5px;
 }

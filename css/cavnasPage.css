@@ -1,0 +1,22 @@
+.sub-header {
+    height: 150px;
+    background-color: #39c5f5;
+}
+
+.turn-count {
+    padding: 30px;
+    color: white;
+    font-size: 2.5rem;
+}
+
+.turn-about {
+    background-image: linear-gradient(#fee786, #f9ef94);
+    flex-grow: 1;
+    padding: 25px;
+    font-size: 3rem;
+}
+
+.color-palt ,.btn-action{
+    background: #f9f2f5;
+    padding: 25px;
+}

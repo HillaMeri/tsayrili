@@ -19,8 +19,8 @@
         <div
           class="header-container main-layout flex align-center space-between"
         >
-          <div class="curr-action"> <img src="img/currency.png"/> </div>
-          <div class="logo"> <img src="img/logo.png"/> </div>
+          <div class="curr-action"><img src="img/currency.png" /></div>
+          <div class="logo"><img src="img/logo.png" /></div>
           <div class="header-action"></div>
         </div>
       </header>
@@ -43,17 +43,17 @@
       </div>
 
       <section class="step-select-word main-layout" hidden>
-            <h2 class="flex align-center space-between">
-              <div class="btn-replace-words flex align-center space-around">
-                <img src="img/currency.png" />
-                <span>5</span>
-                <i class="fas fa-random"></i>
-              </div>
-              <span> בחרי מילה </span>
-              <img src="img/logo2.png" />
-            </h2>
+        <h2 class="flex align-center space-between">
+          <div class="btn-replace-words flex align-center space-around">
+            <img src="img/currency.png" />
+            <span>5</span>
+            <i class="fas fa-random"></i>
+          </div>
+          <span> בחרי מילה </span>
+          <img src="img/logo2.png" />
+        </h2>
 
-          <ul class="word-list"></ul>
+        <ul class="word-list"></ul>
       </section>
     </section>
 
@@ -64,14 +64,10 @@
           <span class="turn-num">1</span>
         </div>
 
-        <h2 class="turn-about flex align-center">
-           אתה מצייר עכשיו<span></span>
-        </h2>
+        <h2 class="turn-about flex align-center"></h2>
       </header>
       <div>
         <div class="color-palt"></div>
-
-        <!-- <input type="color" name-="color" /> -->
       </div>
 
       <div class="canvas-wrapper flex justify-center">
@@ -80,16 +76,15 @@
 
       <div class="btn-action">
         <input
-        type="range"
-        name="brushSize"
-        value="1"
-        min="1"
-        max="17"
-        step="4"
-        title="Brush Size"
-      />
+          type="range"
+          name="brushSize"
+          value="1"
+          min="1"
+          max="17"
+          step="4"
+          title="Brush Size"
+        />
 
-        <!-- <button class="btn-brush" title="Brush"><i class="fas fa-pencil-alt"></i></button> -->
         <button class="btn-clear" title="Clear">
           <i class="fas fa-trash-alt"></i>
         </button>
@@ -97,7 +92,7 @@
         <button class="btn-send" title="Done">🖅</button>
       </div>
     </section>
-    
+
     <section class="step-guess" hidden>
       <button class="btn-cancel" title="Back">🗙</button>
       <button class="btn-play" title="Play Drawing">▶</button>
@@ -106,9 +101,7 @@
       <div class="spot-list-container flex justify-center">
         <ul class="spot-list"></ul>
       </div>
-      <!-- <div class="letter-list-container"> -->
-        <ul class="letter-list  main-layout"></ul>
-      <!-- </div> -->
+      <ul class="letter-list main-layout"></ul>
     </section>
 
     <script type1="module" src="js/utilsService.js"></script>

@@ -53,6 +53,7 @@ function onGuessWord() {
     else {
         document.querySelector('.btn-action').hidden = true;
         document.querySelector('.color-palt').hidden = true;
+        // document.querySelector('.step-draw h2').innerText = 'אתה מנחש עכשיו עבור ' + 
         onPutLetters();
     }
     // startSession();
@@ -84,7 +85,7 @@ function onChooseWord(ev) {
         score
     }
     setCurrWord(word)
-    document.querySelector('.step-draw h2 span').innerText = ' ' + word.txt
+    document.querySelector('.step-draw h2').innerText = 'אתה מצייר עכשיו ' + word.txt 
 }
 
 function onExitWord() {

@@ -64,8 +64,6 @@ button {
 }
 
 .step-guess {
-    position: fixed;
-    bottom: 0;
     width: 100%;
 }
 
@@ -93,16 +91,16 @@ button {
     color: white;
 } */
 
-.letter-list-container {
+/* .letter-list-container {
     background-color: #f5f6f6;
     color: whitesmoke;
     padding: 10px;
-}
+} */
 
 .letter-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, 1fr)
 }
 
 .letter-list li, .spot-list li {
@@ -111,17 +109,24 @@ button {
     border: 6px solid #5f8f9e;
     color: white;
     font-size: 5.5rem;
-    width: 1em;
-    height: 1em;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0.2rem;
 }
 
 .letter-list li {
-    box-shadow: 1px 6px #5f8f9e;
+    box-shadow: 1px 4px #5f8f9e;
+}
+
+.letter-list li.letter-choosen {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
 }
 
 .spot-list li {
-    margin: 0 5px;
+    height: 6rem;
+    width: 6rem;
+    /* margin: 0 0.5rem; */
 }

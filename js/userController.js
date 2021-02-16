@@ -20,7 +20,7 @@ function renderTurn() {
     const elTurnNum = document.querySelector('.turn-count .turn-num')
     elTurnNum.innerText = user.games.length();
 
-    const elTurnAbout = document.querySelector('.turn-about')
+    // const elTurnAbout = document.querySelector('.turn-about')
     // elTurnAbout.innerText =  
 }
 

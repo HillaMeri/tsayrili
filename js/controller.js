@@ -22,10 +22,6 @@ function onInit() {
     renderWords();
 }
 
-// function onSetBrushSize(){
-
-// }
-
 function renderWords() {
     const words = getWords();
     const wordsScoreName = getWordsScoreName()
@@ -54,7 +50,11 @@ function onDrawWord() {
 function onGuessWord() {
     const drawToGuss = getDrawToGuess();
     if (!drawToGuss) console.log('No draws');
-    else onPutLetters();
+    else {
+        document.querySelector('.btn-action').hidden = true;
+        document.querySelector('.color-palt').hidden = true;
+        onPutLetters();
+    }
     // startSession();
 }
 
@@ -84,7 +84,7 @@ function onChooseWord(ev) {
         score
     }
     setCurrWord(word)
-    document.querySelector('.step-draw h2 span').innerText = word.txt
+    document.querySelector('.step-draw h2 span').innerText = ' ' + word.txt
 }
 
 function onExitWord() {
@@ -113,6 +113,7 @@ function onRevertLetter(ev) {
     var guessWordTxt = getGuessWordTxt();
     const el = ev.target.closest('[data-idx]')
     if (!el) return;
+    const letter = el.innerText
     const { idx } = el.dataset
     setLetterMove('', parseInt(idx))
     el.innerText = '';
@@ -120,6 +121,9 @@ function onRevertLetter(ev) {
     letters.splice(idx, 1, ' ')
     guessWordTxt = letters.join('')
     setGuessWordTxt(guessWordTxt)
+    let elLetter = document.querySelector(`.${letter}`)
+    elLetter.classList.remove('letter-choosen');
+    elLetter.classList.remove(`${letter}`);
 }
 
 function onChooseLetter(ev) {
@@ -128,11 +132,16 @@ function onChooseLetter(ev) {
     const el = ev.target.closest('[data-letter]')
     if (!el) return;
     const { letter } = el.dataset
+    el.classList.add('letter-choosen');
+    el.classList.add(`${letter}`);
+    // el.removeEventListener('click', onChooseLetter);
+
     const lis = Array.from(document.querySelectorAll('.spot-list li'));
     const idxFreeSpot = lis.findIndex(li => !li.innerText.trim())
     if (idxFreeSpot === -1) return;
     lis[idxFreeSpot].innerText = letter;
     setLetterMove(letter, idxFreeSpot, true)
+
     if (idxFreeSpot >= guessWordTxt.length) {
         guessWordTxt += letter;
     } else {
@@ -140,6 +149,7 @@ function onChooseLetter(ev) {
         letters.splice(idxFreeSpot, 1, letter)
         guessWordTxt = letters.join('')
     }
+
     setGuessWordTxt(guessWordTxt)
     console.log('Curr word:', guessWordTxt)
     console.log(currDraw.word.txt);
@@ -160,24 +170,24 @@ function onPlayDraw() {
 
 function onUseBomb() {
     if (getIsUseBomb()) return
-    useBomb()
+    // useBomb()
     var drawToGuess = getDrawToGuess();
     var letters = drawToGuess.word.txt.split('')
     while (letters.length < 8) {
-        letters.push(drawToGuess.lettersToGuess.pop())
+        letters.push(drawToGuess.extraLetters.pop())
     }
 
     shuffleArray(letters)
+    setDrawLettersList(letters)
 
     const strHTMLs = letters.map(letter => `<li data-letter="${letter}">
     ${letter}
     </li>`)
 
-
     document.querySelector('.letter-list').innerHTML = strHTMLs.join('')
     document.querySelector('.spot-list').innerHTML = drawToGuess.word.txt.split('').map((letter, idx) => `<li data-idx="${idx}"></li>`).join('')
-    document.querySelector('.letter-list').addEventListener('click', ev => onChooseLetter(ev))
-    document.querySelector('.spot-list').addEventListener('click', ev => onRevertLetter(ev))
+    // document.querySelector('.letter-list').addEventListener('click', ev => onChooseLetter(ev))
+    // document.querySelector('.spot-list').addEventListener('click', ev => onRevertLetter(ev))
 
 }
 
@@ -192,6 +202,7 @@ function onPutLetters() {
 
     onPlayDraw(drawToGuss.drawDots)
     const currWordTxt = drawToGuss.word.txt;
+    console.log("🚀 ~ file: controller.js ~ line 205 ~ onPutLetters ~ currWordTxt", drawToGuss)
     var letters = currWordTxt.split('')
     while (letters.length < 12) {
         const letter = getRandomLetter();

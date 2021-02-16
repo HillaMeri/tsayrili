@@ -113,7 +113,7 @@ function onSetBrushSize(ev) {
 
 function drawEnd() {
     var newDraw = {
-        drawDots: [...gDrawDots]
+        drawDots: [...gDrawDots],       
     }
     gDrawDots = [];
     return newDraw;

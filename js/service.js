@@ -4,6 +4,7 @@ var gCurrWord = {
     txt: '',
     score: ''
 };
+
 var gGuessedWordTxt = '';
 
 var draw = {
@@ -22,10 +23,10 @@ var draw = {
         { x: 58, y: 120, color: 'red', brushSize: 3 },
         { x: 57, y: 100, color: 'red', brushSize: 3 },
     ],
-    lettersToGuess: [],
-    isBombUsed: false
+    extraLetters: [],
+    isBombUsed: false,
+    letters: []
 }
-
 
 const gWords = [
     {
@@ -50,7 +51,7 @@ const gWordScoreName = {
 
 const gLetters = 'אבגדהוזחטיכלמנסעפצקרשת'.split('');
 
-var gDrawsToGuess = [draw]
+var gDrawsToGuess = []
 
 var gCurrDrawToGuess = {}
 
@@ -91,15 +92,20 @@ function getRandomLetter() {
 }
 
 function addDraw(draw) {
+    console.log('gCurrWord', gCurrWord);
     const newDraw = {
         _id: makeId(),
-        word: gCurrWord.txt,
-        score: gCurrWord.score,
+        word: {
+            txt: gCurrWord.txt,
+            score: gCurrWord.score,
+        },
         drawDots: draw.drawDots,
-        lettersToGuess: [],
+        extraLetters: [],
         isBombUsed: false,
-        createdBy: getLogginUser()
+        createdBy: getLogginUser(),
+        letters: []
     }
+
     gCurrWord = {
         txt: '',
         score: 0
@@ -123,10 +129,11 @@ function getCurrDraw() {
 }
 
 function addLetterDrawToGuess(letter) {
-    gCurrDrawToGuess.lettersToGuess.push(letter)
+    gCurrDrawToGuess.extraLetters.push(letter)
 }
 
-function getIsUseBomb(){
+
+function getIsUseBomb() {
     console.log(gCurrDrawToGuess.iBombUsed);
     return gCurrDrawToGuess.iBombUsed
 }
@@ -137,9 +144,9 @@ function usBomb() {
 }
 
 function changeLetters() {
-    gCurrDrawToGuess.lettersToGuess = [];
+    gCurrDrawToGuess.extraLetters = [];
 }
 
-// function addDrawToSession() {
-    
-// }
+function setDrawLettersList(letters) {
+    gCurrDrawToGuess.letters = letters;
+}

@@ -71,6 +71,8 @@ button {
     background-color: rgb(82, 209, 251, 0.8);
     color: whitesmoke;
     padding: 10px;
+    transition: .3s;
+    position: relative;
 }
 
 .spot-list {

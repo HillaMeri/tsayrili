@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="css/cavnasPage.css" />
     <link rel="stylesheet" href="css/helpers.css" />
     <link rel="stylesheet" href="css/selectWords.css" />
+    <link rel="stylesheet" href="css/nextTurn.css" />
+    <link rel="stylesheet" href="css/animation.css" />
     <script
       src="https://kit.fontawesome.com/1ed641f7ad.js"
       crossorigin="anonymous"
@@ -61,7 +63,7 @@
       <header class="sub-header flex">
         <div class="turn-count flex column align-center">
           שלב
-          <span class="turn-num">1</span>
+          <span class="turn-level">1</span>
         </div>
 
         <h2 class="turn-about flex align-center"></h2>
@@ -99,9 +101,20 @@
       <button class="btn-bomb">💣</button>
       <button class="btn-replace-letters">🌫</button>
       <div class="spot-list-container flex justify-center">
+        <div class="correct" hidden>Correct</div>
         <ul class="spot-list"></ul>
       </div>
       <ul class="letter-list main-layout"></ul>
+    </section>
+
+    <section class="next-turn" hidden>
+      <h2>הציור נוחש נכון</h2>
+      <div class="turn-num flex column">
+        <h2>תור</h2>
+        <span class="prev-num slide-out-bottom"></span>
+        <span class="next-num slide-in-top"></span>
+      </div>
+      <button class="btn-go">שחק</button>
     </section>
 
     <script type1="module" src="js/utilsService.js"></script>

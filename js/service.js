@@ -25,7 +25,9 @@ var draw = {
     ],
     extraLetters: [],
     isBombUsed: false,
-    letters: []
+    letters: [],
+    createdBy: getLogginUser(),
+    turn: 1
 }
 
 const gWords = [
@@ -51,7 +53,7 @@ const gWordScoreName = {
 
 const gLetters = 'אבגדהוזחטיכלמנסעפצקרשת'.split('');
 
-var gDrawsToGuess = []
+var gDrawsToGuess = [draw]
 
 var gCurrDrawToGuess = {}
 
@@ -92,7 +94,6 @@ function getRandomLetter() {
 }
 
 function addDraw(draw) {
-    console.log('gCurrWord', gCurrWord);
     const newDraw = {
         _id: makeId(),
         word: {
@@ -103,7 +104,8 @@ function addDraw(draw) {
         extraLetters: [],
         isBombUsed: false,
         createdBy: getLogginUser(),
-        letters: []
+        letters: [],
+        turn: 1
     }
 
     gCurrWord = {
@@ -114,6 +116,10 @@ function addDraw(draw) {
     gDrawsToGuess.push(newDraw);
 
     addUserDraw(newDraw);
+}
+
+function moveNextTurn(){
+    //TODO: MOVE THE TURN TO NEXT TURN
 }
 
 function getDrawToGuess() {

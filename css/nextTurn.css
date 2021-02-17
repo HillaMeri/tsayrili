@@ -1,0 +1,30 @@
+.next-turn {
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #f6ac49;
+    color: white;
+}
+
+.turn-num {
+    align-items: center;
+    background-color: #39c5f5;
+    padding: 10px 215px;
+    box-shadow: 8px 12px 14px 11px #777575;
+}
+
+.turn-num h2 {
+    font-size: 2rem;
+}
+
+.turn-num .prev-num, .turn-num .next-num {
+    font-size: 10rem;
+}
+
+.next-turn button {
+    background-color: #39c5f5;
+    padding: 20px 50px;
+    border-radius: 10px;
+    color: white;
+}

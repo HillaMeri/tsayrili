@@ -14,12 +14,18 @@ function onInit() {
     document.querySelector('.btn-cancel').addEventListener('click', onExitWord)
     // document.querySelector('input[name=color]').addEventListener('change', onSetColor)
     document.querySelector('input[name=brushSize]').addEventListener('change', onSetBrushSize)
-    // document.querySelector('btn-brush').addEventListener('click', onSetBrushSize)
     document.querySelector('.btn-play').addEventListener('click', onPlayDraw)
     document.querySelector('.btn-send').addEventListener('click', onSendDraw)
     document.querySelector('.btn-bomb').addEventListener('click', onUseBomb)
     document.querySelector('.btn-replace-letters').addEventListener('click', onPutLetters)
+    document.querySelector('.btn-go').addEventListener('click', OnNextLevel)
     renderWords();
+}
+
+function OnNextLevel() {
+    document.querySelector('.next-turn').hidden = true;
+    document.querySelector('.home-game').hidden = false;
+    onDrawWord();
 }
 
 function renderWords() {
@@ -53,10 +59,9 @@ function onGuessWord() {
     else {
         document.querySelector('.btn-action').hidden = true;
         document.querySelector('.color-palt').hidden = true;
-        // document.querySelector('.step-draw h2').innerText = 'אתה מנחש עכשיו עבור ' + 
+        document.querySelector('.step-draw h2').innerText = 'אתה מנחש עכשיו עבור ' + drawToGuss.createdBy.username
         onPutLetters();
     }
-    // startSession();
 }
 
 function onBackHome() {
@@ -85,7 +90,7 @@ function onChooseWord(ev) {
         score
     }
     setCurrWord(word)
-    document.querySelector('.step-draw h2').innerText = 'אתה מצייר עכשיו ' + word.txt 
+    document.querySelector('.step-draw h2').innerText = 'אתה מצייר עכשיו ' + word.txt
 }
 
 function onExitWord() {
@@ -155,10 +160,30 @@ function onChooseLetter(ev) {
     console.log('Curr word:', guessWordTxt)
     console.log(currDraw.word.txt);
     if (guessWordTxt === currDraw.word.txt) {
-        addUserScore(currDraw.word.score)
-        alert('ניצחון!');
-        backHome();
+        addUserScore(currDraw.word.score);
+        moveNextTurn();
+        turnOver(currDraw);
+        // backHome();
     }
+}
+
+function turnOver(currDraw) {
+    document.querySelector('.correct').hidden = false
+    document.querySelector('.spot-list-container').style.background = '#4ecd4a'
+    const elSpots = document.querySelectorAll('.spot-list li')
+    elSpots.forEach(elSpot => elSpot.style.background = '#4ecd4a')
+
+
+    setTimeout(() => {
+        document.querySelector('.step-guess').hidden = true
+        document.querySelector('.step-draw').hidden = true
+        document.querySelector('.next-turn').hidden = false
+        document.querySelector('.next-turn').style.display = 'flex'
+
+        document.querySelector('.next-turn .prev-num').innerText = currDraw.turn;
+        document.querySelector('.next-turn .next-num').innerText = currDraw.turn + 1;
+
+    }, 2500)
 }
 
 function onPlayDraw() {

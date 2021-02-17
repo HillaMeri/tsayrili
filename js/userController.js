@@ -17,7 +17,7 @@ function renderUserImg() {
 
 function renderTurn() {
     const user = getLogginUser();
-    const elTurnNum = document.querySelector('.turn-count .turn-num')
+    const elTurnNum = document.querySelector('.turn-count .turn-nlevel')
     elTurnNum.innerText = user.games.length();
 
     // const elTurnAbout = document.querySelector('.turn-about')

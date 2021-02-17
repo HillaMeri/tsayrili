@@ -72,3 +72,14 @@
     width: 35px;
     height: 35px;
 }
+
+.correct{
+    color: white;
+    background-color: #4ecd4a;
+    position: absolute;
+    top: -70px;
+    padding: 20px 70px;
+    border-radius: 10px;
+    font-size: 3rem;
+    transition: .3s;
+}

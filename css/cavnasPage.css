@@ -16,7 +16,88 @@
     font-size: 3rem;
 }
 
-.color-palt ,.btn-action{
+.color-palt, .btn-action {
     background: #f9f2f5;
     padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.btn-action button {
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    font-size: 3rem;
+}
+
+.btn-send {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    background: darkgrey;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 3rem;
+    color: #d0cdcd;
+}
+
+.container-brush, .container-eraser {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-size {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: absolute;
+    top: -415px;
+}
+
+.circle-size {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(148, 148, 148, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.circle-size span {
+    background-color: white;
+    border-radius: 50%;
+}
+
+.size1 {
+    width: 20px;
+    height: 20px;
+}
+
+.size2 {
+    width: 35px;
+    height: 35px;
+}
+
+.size3 {
+    width: 50px;
+    height: 50px;
+}
+
+.size4 {
+    width: 65px;
+    height: 65px;
+}
+
+.btn-brush-size, .btn-eraser-size {
+    border: 8px white solid;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.btn-clear {
+    color: #d0cdcd;
 }

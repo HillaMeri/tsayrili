@@ -7,6 +7,8 @@ var gCurrWord = {
 
 var gGuessedWordTxt = '';
 
+var currGame = {}
+
 var draw = {
     _id: '123',
     word: {
@@ -53,7 +55,7 @@ const gWordScoreName = {
 
 const gLetters = 'אבגדהוזחטיכלמנסעפצקרשת'.split('');
 
-var gDrawsToGuess = [draw]
+var gDrawsToGuess = []
 
 var gCurrDrawToGuess = {}
 
@@ -118,7 +120,7 @@ function addDraw(draw) {
     addUserDraw(newDraw);
 }
 
-function moveNextTurn(){
+function moveNextTurn() {
     //TODO: MOVE THE TURN TO NEXT TURN
 }
 
@@ -156,3 +158,7 @@ function changeLetters() {
 function setDrawLettersList(letters) {
     gCurrDrawToGuess.letters = letters;
 }
+
+// function nextLevel() {
+
+// }

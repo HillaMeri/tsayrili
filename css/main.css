@@ -61,6 +61,8 @@ canvas {
 button {
     font-size: 1.2em;
     margin: 5px;
+    cursor: pointer;
+    border: none;
 }
 
 .step-guess {

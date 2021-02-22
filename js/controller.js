@@ -6,6 +6,8 @@ window.onload = onInit
 function onInit() {
     initCanvas()
     renderUser()
+    renderModalSize(document.querySelector('.container-brush .modal-size'))
+    renderModalSize(document.querySelector('.container-eraser .modal-size'))
     // buttons
     document.querySelector('.btn-draw-word').addEventListener('click', onDrawWord)
     document.querySelector('.btn-guess-word').addEventListener('click', onGuessWord)
@@ -19,12 +21,19 @@ function onInit() {
     document.querySelector('.btn-bomb').addEventListener('click', onUseBomb)
     document.querySelector('.btn-replace-letters').addEventListener('click', onPutLetters)
     document.querySelector('.btn-go').addEventListener('click', OnNextLevel)
+
+    document.querySelector('.btn-brush-size').addEventListener('click', onToggleModalBrushSize)
+    document.querySelector('.btn-eraser-size').addEventListener('click', onToggleModalEraserSize)
     renderWords();
 }
 
 function OnNextLevel() {
     document.querySelector('.next-turn').hidden = true;
     document.querySelector('.home-game').hidden = false;
+    document.querySelector('.next-turn').hidden = true;
+    document.querySelector('.next-turn').style.display = 'none'
+    clearCanvas();
+    clearDraw();
     onDrawWord();
 }
 
@@ -80,8 +89,12 @@ function backHome() {
 }
 
 function onChooseWord(ev) {
-    document.querySelector('.home-game').hidden = true
-    document.querySelector('.step-draw').hidden = false
+    document.querySelector('.home-game').hidden = true;
+    document.querySelector('.step-draw').hidden = false;
+    document.querySelector('.btn-action').hidden = false;
+    document.querySelector('.color-palt').hidden = false;
+    document.querySelector('.btn-send').hidden = false;
+
     const el = ev.target.closest('[data-txt]')
     const { txt, score } = el.dataset
     if (!txt) return
@@ -172,7 +185,7 @@ function turnOver(currDraw) {
     document.querySelector('.spot-list-container').style.background = '#4ecd4a'
     const elSpots = document.querySelectorAll('.spot-list li')
     elSpots.forEach(elSpot => elSpot.style.background = '#4ecd4a')
-
+    nextLevel()
 
     setTimeout(() => {
         document.querySelector('.step-guess').hidden = true
@@ -182,6 +195,10 @@ function turnOver(currDraw) {
 
         document.querySelector('.next-turn .prev-num').innerText = currDraw.turn;
         document.querySelector('.next-turn .next-num').innerText = currDraw.turn + 1;
+
+        document.querySelector('.correct').hidden = true
+        document.querySelector('.spot-list-container').style.background = 'rgb(82, 209, 251, 0.8)'
+        elSpots.forEach(elSpot => elSpot.style.background = 'rgb(82, 209, 251, 0.8)')
 
     }, 2500)
 }
@@ -212,9 +229,6 @@ function onUseBomb() {
 
     document.querySelector('.letter-list').innerHTML = strHTMLs.join('')
     document.querySelector('.spot-list').innerHTML = drawToGuess.word.txt.split('').map((letter, idx) => `<li data-idx="${idx}"></li>`).join('')
-    // document.querySelector('.letter-list').addEventListener('click', ev => onChooseLetter(ev))
-    // document.querySelector('.spot-list').addEventListener('click', ev => onRevertLetter(ev))
-
 }
 
 function onPutLetters() {
@@ -228,7 +242,6 @@ function onPutLetters() {
 
     onPlayDraw(drawToGuss.drawDots)
     const currWordTxt = drawToGuss.word.txt;
-    console.log("🚀 ~ file: controller.js ~ line 205 ~ onPutLetters ~ currWordTxt", drawToGuss)
     var letters = currWordTxt.split('')
     while (letters.length < 12) {
         const letter = getRandomLetter();
@@ -246,4 +259,29 @@ function onPutLetters() {
     document.querySelector('.letter-list').addEventListener('click', ev => onChooseLetter(ev))
     document.querySelector('.spot-list').addEventListener('click', ev => onRevertLetter(ev))
 
+}
+
+function renderModalSize(elContainer) {
+    let strHtml = ``;
+    for (let i = 4; i > 0; i--) {
+        strHtml += `<div data-id=${i} class='circle-size'>
+                     <span class='size${i}'></span>
+                    </div>`
+    }
+    elContainer.innerHTML = strHtml;
+    elContainer.style.display = 'none';
+}
+
+function onToggleModalBrushSize() {
+    onToggleModalSize(document.querySelector('.container-brush .modal-size'))
+}
+
+function onToggleModalEraserSize() {
+    onToggleModalSize(document.querySelector('.container-eraser .modal-size'))
+}
+
+function onToggleModalSize(elContainer) {
+    (elContainer.style.display === 'none') ?
+        elContainer.style.display = 'flex'
+        : elContainer.style.display = 'none';
 }

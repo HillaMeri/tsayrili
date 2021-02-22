@@ -16,7 +16,7 @@
     font-size: 3rem;
 }
 
-.color-palt, .btn-action {
+.color-palt, .btns-action {
     background: #f9f2f5;
     padding: 25px;
     display: flex;
@@ -24,7 +24,7 @@
     justify-content: space-around;
 }
 
-.btn-action button {
+.btns-action button {
     width: 100px;
     height: 100px;
     background-color: transparent;

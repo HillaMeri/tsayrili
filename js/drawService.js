@@ -1,5 +1,28 @@
 'use strict'
 
+import { userService } from './userService.js'
+import { utilService } from './utilService.js'
+
+export const drawService = {
+    setLetterMove,
+    getWordsScoreName,
+    getWords,
+    setCurrWord,
+    getGuessWordTxt,
+    setGuessWordTxt,
+    getRandomLetter,
+    addDraw,
+    getDrawToGuess,
+    getCurrDraw,
+    addLetterDrawToGuess,
+    getIsUseBomb,
+    changeLetters,
+    setDrawLettersList,
+    playGuess,
+    setLetterMove,
+    moveNextTurn
+}
+
 var gCurrWord = {
     txt: '',
     score: ''
@@ -28,7 +51,7 @@ var draw = {
     extraLetters: [],
     isBombUsed: false,
     letters: [],
-    createdBy: getLogginUser(),
+    createdBy: userService.getLogginUser(),
     turn: 1
 }
 
@@ -70,7 +93,6 @@ function setLetterMove(letter, idx, isIn = false) {
     gLettersMoves.push(move)
 }
 
-
 function getWords() {
     return gWords;
 }
@@ -97,7 +119,7 @@ function getRandomLetter() {
 
 function addDraw(draw) {
     const newDraw = {
-        _id: makeId(),
+        _id: utilService.makeId(),
         word: {
             txt: gCurrWord.txt,
             score: gCurrWord.score,
@@ -105,7 +127,7 @@ function addDraw(draw) {
         drawDots: draw.drawDots,
         extraLetters: [],
         isBombUsed: false,
-        createdBy: getLogginUser(),
+        createdBy: userService.getLogginUser(),
         letters: [],
         turn: 1
     }
@@ -117,7 +139,7 @@ function addDraw(draw) {
 
     gDrawsToGuess.push(newDraw);
 
-    addUserDraw(newDraw);
+    userService.addUserDraw(newDraw);
 }
 
 function moveNextTurn() {
@@ -146,11 +168,6 @@ function getIsUseBomb() {
     return gCurrDrawToGuess.iBombUsed
 }
 
-function usBomb() {
-    gCurrDrawToGuess.iBombUsed = true;
-    userUseBomb()
-}
-
 function changeLetters() {
     gCurrDrawToGuess.extraLetters = [];
 }
@@ -162,3 +179,14 @@ function setDrawLettersList(letters) {
 // function nextLevel() {
 
 // }
+
+
+function playGuess() {
+    gLettersMoves.forEach((move, idx) => {
+        setTimeout(_doMove, 10 * idx, move)
+    })
+}
+
+function _doMove(move) {
+    console.log(move);
+}

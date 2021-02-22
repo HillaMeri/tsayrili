@@ -1,5 +1,17 @@
 'use strict'
 
+export const canvasController = {
+    initCanvas,
+    setDraw,
+    clearCanvas,
+    // onSetColor,
+    // onSetBrushSize,
+    clearDraw,
+    drawEnd,
+    drawDot
+}
+
+
 var gCanvas, gCtx
 var isMouseDown = false
 
@@ -17,9 +29,9 @@ function initCanvas() {
     gCanvas.addEventListener('mouseout', () => {
         isMouseDown = false
     })
-    gCanvas.addEventListener('mousedown', onCanvasMouseDown)
-    gCanvas.addEventListener('touchstart', onCanvasMouseDown)
-    gCanvas.addEventListener('mousemove', onCanvasMouseMove)
+    gCanvas.addEventListener('mousedown', _onCanvasMouseDown)
+    gCanvas.addEventListener('touchstart', _onCanvasMouseDown)
+    gCanvas.addEventListener('mousemove', _onCanvasMouseMove)
     gCanvas.addEventListener('touchmove', (ev) => {
         ev.preventDefault()
         ev.stopPropagation()
@@ -32,19 +44,19 @@ function initCanvas() {
         }
         // console.log('TOUCH dispatching mouseEvent', mouseEvent);
         // gCanvas.dispatchEvent(mouseEvent)
-        onCanvasMouseMove(mouseEv)
+        _onCanvasMouseMove(mouseEv)
     })
-    gCanvas.addEventListener('mouseup', onCanvasMouseUp)
-    gCanvas.addEventListener('touchend', onCanvasMouseUp)
-    gCanvas.addEventListener('touchup', onCanvasMouseUp)
+    gCanvas.addEventListener('mouseup', _onCanvasMouseUp)
+    gCanvas.addEventListener('touchend', _onCanvasMouseUp)
+    gCanvas.addEventListener('touchup', _onCanvasMouseUp)
 
     gCanvas.width = window.innerWidth;
 }
 
 // Keep track of the mouse button being pressed and draw a dot at current location
-function onCanvasMouseDown(ev) {
+function _onCanvasMouseDown(ev) {
     isMouseDown = true
-    const mousePos = getMousePos(ev)
+    const mousePos = _getMousePos(ev)
 
     drawDot(gCtx, mousePos)
 }
@@ -53,7 +65,7 @@ function setDraw(type, val) {
     gDraw[type] = val;
 }
 
-function getMousePos(ev) {
+function _getMousePos(ev) {
     const mousePos = {
         x: ev.offsetX || ev.layerX || 0,
         y: ev.offsetY || ev.layerY || 0
@@ -63,13 +75,13 @@ function getMousePos(ev) {
 }
 
 // Keep track of the mouse button being released
-function onCanvasMouseUp() {
+function _onCanvasMouseUp() {
     isMouseDown = false
 }
 
 // Keep track of the mouse position and draw a dot if mouse button is currently pressed
-function onCanvasMouseMove(ev) {
-    const mousePos = getMousePos(ev)
+function _onCanvasMouseMove(ev) {
+    const mousePos = _getMousePos(ev)
 
     // Draw a dot if the mouse button is currently being pressed
     if (isMouseDown) {
@@ -113,7 +125,7 @@ function onSetBrushSize(ev) {
 
 function drawEnd() {
     var newDraw = {
-        drawDots: [...gDrawDots],       
+        drawDots: [...gDrawDots],
     }
     gDrawDots = [];
     return newDraw;

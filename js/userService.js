@@ -1,3 +1,8 @@
+export const userService = {
+    getLogginUser,
+    addUserDraw,
+    addUserScore
+}
 
 const user = {
     _id: '0a',
@@ -20,10 +25,6 @@ const user2 = {
 
 function getLogginUser() {
     return user;
-}
-
-function userUsedBomb() {
-    user.bombs--;
 }
 
 function addUserDraw(draw) {

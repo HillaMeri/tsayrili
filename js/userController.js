@@ -1,6 +1,15 @@
+import { userService } from './userService.js'
+import { canvasController } from './canvasController.js'
+
+export const userController = {
+    renderUser,
+    renderUserImg,
+    renderTurn,
+    renderColors,
+}
 
 function renderUser() {
-    const user = getLogginUser();
+    const user = userService.getLogginUser();
     renderUserImg();
     const elUserbombs = document.querySelector('.user-bombs span');
     elUserbombs.innerText = user.bombs;
@@ -10,13 +19,13 @@ function renderUser() {
 }
 
 function renderUserImg() {
-    const user = getLogginUser();
+    const user = userService.getLogginUser();
     const elheaderAction = document.querySelector('.header-action');
     elheaderAction.innerHTML = `<img class="user-img" src="${user.imgUrl}" />`;
 }
 
 function renderTurn() {
-    const user = getLogginUser();
+    const user = userService.getLogginUser();
     const elTurnNum = document.querySelector('.turn-count .turn-nlevel')
     elTurnNum.innerText = user.games.length();
 
@@ -33,13 +42,13 @@ function renderColors(user) {
         class="fas fa-paint-brush"></i>`
     })
     document.querySelector('.color-palt').innerHTML = strHTMLs.join('')
-    document.querySelector('.color-palt').addEventListener('click', ev => onChoosecolor(ev))
+    document.querySelector('.color-palt').addEventListener('click', ev => _onChoosecolor(ev))
 }
 
 
-function onChoosecolor(ev) {
+function _onChoosecolor(ev) {
     const el = ev.target.closest('[data-color]')
     const { color } = el.dataset
     if (!color) return
-    setDraw('color', color);
+    canvasController.setDraw('color', color);
 }
